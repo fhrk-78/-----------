@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>スーパー花ウィメーカー v1.0</title>
+        <style>
+            * {
+                text-align: center;
+                margin: 0 auto;
+            }
+        </style>
+    </head>
+<body>
+<h1>スーパー花ウィメーカー！！！</h1>
+<p>※このプログラムを使用して作成された画像についての責任は負いかねます<br>
+右クリックで保存できます</p><br>
+<input type="text" id="text__"><a href="javascript:drawText()">文字を追加</a><br><br>
+<canvas id="canvas"></canvas>
+</body>
+<script>
+    const canvas = document.getElementById("canvas");        
+    let imagePath = "hanawi.png";
+    draw(canvas,imagePath);
+    function draw(canvas,imagePath){
+        const image = new Image();
+        image.addEventListener("load",function (){
+            canvas.width = image.naturalWidth;
+            canvas.height = image.naturalHeight;
+            const ctx = canvas.getContext("2d");
+            ctx.drawImage(image, 0, 0);
+        });
+        image.src = imagePath;
+    }
+
+    function drawText()
+{
+	var ctx = canvas.getContext('2d');
+	const text = document.getElementById('text__');
+	ctx.font = '48px sans-serif';
+	ctx.fillStyle = '#404040';
+	ctx.textBaseline = 'center';
+	ctx.textAlign = 'left';
+	var x = (canvas.width / 6);
+	var y = (canvas.height / 1.5);
+	ctx.fillText(text.value, x, y);
+}
+    </script>
+</html>
